@@ -9,7 +9,7 @@ module.exports = {
     return [
       {
         source: '/api/:path*',
-        destination: 'https://crud-temas-chatboot-cetec-p5pxmvjnl-diegoracero.vercel.app/:path*'
+        destination: 'https://crud-temas-chatboot-cetec-b2o4hf20o-diegoracero.vercel.app/:path*'
       }
     ]
   }
