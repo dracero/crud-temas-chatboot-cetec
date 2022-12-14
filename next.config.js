@@ -11,7 +11,7 @@ module.exports = {
         return [
           {
             source: '/api/:path*',
-            destination: 'https://api.example.com/:path*',
+            destination: 'https://crud-temas-chatboot-cetec-r19h2xeuf-diegoracero.vercel.app/:path*',
           },
         ]
       },
