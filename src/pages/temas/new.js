@@ -2,6 +2,8 @@ import {Form, Grid, Button} from 'semantic-ui-react'
 import {useState, useEffect} from 'react';
 import { useRouter } from 'next/router';
 
+const hostUrl = process.env.NEXT_PUBLIC_HOST_URL;
+
 export default function TemaFormPage(){
 
     const {query, push} = useRouter();
@@ -42,7 +44,7 @@ export default function TemaFormPage(){
 
     const createTema = async() =>{
         try{
-            fetch('http://localhost:3000/api/temas',{
+            fetch(`${hostUrl}/api/temas`,{
                 method:'POST',
                 headers:{
                     "Content-Type":"Application/json"
@@ -56,7 +58,7 @@ export default function TemaFormPage(){
 
     const updateTema = async() =>{
         try{
-            fetch('http://localhost:3000/api/temas/'+query.id,{
+            fetch(`${hostUrl}/api/temas/${query.id}`,{
                 method:'PUT',
                 headers:{
                     "Content-Type":"Application/json"
@@ -73,7 +75,7 @@ export default function TemaFormPage(){
     }
 
     const getTema = async() =>{
-        const res = await fetch (`http://localhost:3000/api/temas/${query.id}`);
+        const res = await fetch (`${hostUrl}/api/temas/${query.id}`);
         const data = await res.json();
         //console.log(data);
         setNewTema({title:data.title, description:data.description});

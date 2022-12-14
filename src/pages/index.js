@@ -1,6 +1,8 @@
 import { Button, Card, Container, Grid } from "semantic-ui-react";
 import { useRouter } from 'next/router';
 
+const hostUrl = process.env.NEXT_PUBLIC_HOST_URL;;
+
 export default function HomePage({temas}) {
   //console.log(temas);
 
@@ -54,7 +56,7 @@ export default function HomePage({temas}) {
 //esto se consologuea en el back
 
 export const getServerSideProps = async (ctx) => {
-  const res = await fetch('http://localhost:3000/api/temas');
+  const res = await fetch(`${hostUrl}/api/temas`); 
   const temas = await res.json();
   console.log(temas);
 

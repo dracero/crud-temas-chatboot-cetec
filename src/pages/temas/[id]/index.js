@@ -3,6 +3,8 @@ import { useState } from "react";
 import { Button, Grid, Confirm, Loader } from "semantic-ui-react";
 import { useRouter } from "next/router";
 
+const hostUrl = process.env.NEXT_PUBLIC_HOST_URL;
+
 export default function TemaDetail({tema, error}) {
 
   const [isDeleting, setIsDeleting] = useState(false);
@@ -15,7 +17,7 @@ export default function TemaDetail({tema, error}) {
     const {id} = query;
     //console.log(id);
     try{
-      await fetch (`http://localhost:3000/api/temas/${id}`,{
+      await fetch (`${hostUrl}/api/temas/${id}`,{
         method:"DELETE",
       });
     }catch(error){
@@ -70,8 +72,7 @@ export async function getServerSideProps({ query: { id } }) {
 
   //console.log(id);
 
-
-  const res = await fetch(`http://localhost:3000/api/temas/${id}`);
+  const res = await fetch(`${hostUrl}/api/temas/${id}`);
 
   if (res.status === 200) {
     const tema = await res.json()
